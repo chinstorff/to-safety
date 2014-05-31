@@ -98,7 +98,7 @@ Game.Play.prototype = {
 	var title = game.add.text(game.world.width / 2, game.world.height / 2, 'You won!', { font: '60px Arial', fill: '#222222', align: 'center' });
 	title.anchor.setTo(0.5, 0.5);
 
-	var prompt = game.add.text(game.world.width / 2, game.world.height / 3 * 2, 'press the UP arrow key to begin', { font: '30px Arial', fill: '#222222', align: 'center' });
+	var prompt = game.add.text(game.world.width / 2, game.world.height / 3 * 2, 'press the UP arrow key to restart', { font: '30px Arial', fill: '#222222', align: 'center' });
 	prompt.anchor.setTo(0.5, 0.5);
     },
 
