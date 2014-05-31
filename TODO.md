@@ -1,4 +1,3 @@
-- Title screen
 - Restart game
 - Resizeable world
 - Alternative controls

@@ -72,6 +72,15 @@ Game.Play.prototype = {
 	switch (currentGameState) {
 	case GameState.Won:
 	    ball.body.velocity.y = (game.world.height - ball.body.position.y) / 2 ;
+	    if (cursors.up.isDown) {
+		currentGameState = GameState.InProgress;
+		game.state.start('Play');
+	    }
+	case GameState.Lost:
+	    if (cursors.up.isDown) {
+		currentGameState = GameState.InProgress;
+		game.state.start('Play');
+	    }
 	}
     },
 
@@ -86,10 +95,20 @@ Game.Play.prototype = {
 	ball.body.velocity.x = 0;
 	ball.body.gravity.y = 0;
 
-	resultText = game.add.text(335, 300, 'You won!', {fill: '#222'});
+	var title = game.add.text(game.world.width / 2, game.world.height / 2, 'You won!', { font: '60px Arial', fill: '#222222', align: 'center' });
+	title.anchor.setTo(0.5, 0.5);
+
+	var prompt = game.add.text(game.world.width / 2, game.world.height / 3 * 2, 'press the UP arrow key to begin', { font: '30px Arial', fill: '#222222', align: 'center' });
+	prompt.anchor.setTo(0.5, 0.5);
     },
 
     gameLose: function (ball, death) {
-	resultText = game.add.text(335, 300, 'You lost!', {fill: '#222'});
+	currentGameState = GameState.Lost;
+
+	var title = game.add.text(game.world.width / 2, game.world.height / 2, 'You lost!', { font: '60px Arial', fill: '#222222', align: 'center' });
+	title.anchor.setTo(0.5, 0.5);
+
+	var prompt = game.add.text(game.world.width / 2, game.world.height / 3 * 2, 'press the UP arrow key to restart', { font: '30px Arial', fill: '#222222', align: 'center' });
+	prompt.anchor.setTo(0.5, 0.5);
     }
 }
