@@ -124,4 +124,4 @@ Game.Play.prototype = {
 	var prompt = game.add.text(game.world.width / 2, game.world.height / 3 * 2, 'press the UP arrow key to restart', { font: '30px Arial', fill: '#222222', align: 'center' });
 	prompt.anchor.setTo(0.5, 0.5);
     }
-}
+};
