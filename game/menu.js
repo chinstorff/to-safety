@@ -28,13 +28,12 @@ Game.Menu.prototype = {
 
 	var instr = game.add.text(game.world.width / 2, game.world.height / 3 * 2 + 20, 'LEFT and RIGHT arrow keys to move', { font: '25px Arial', fill: '#222222', align: 'center' });
 	instr.anchor.setTo(0.5, 0.5);
-
-	music = game.add.sound('music');
-	music.play('', 0, 0.5, true, false);
     },
 
     update: function () {
 	if (cursors.up.isDown) {
+	    music = game.add.sound('music');
+	    music.play('', 0, 0.5, true, false);
 	    game.state.start('Play');
 	}
     }
