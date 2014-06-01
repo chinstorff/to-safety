@@ -75,7 +75,7 @@ Game.Play.prototype = {
 
 	switch (currentGameState) {
 	case GameState.Won:
-	    ball.body.velocity.y = (game.world.height - ball.body.position.y) / 2 ;
+	    ball.body.velocity.y = (game.world.height - ball.body.position.y) / 2;
 	    if (cursors.up.isDown) {
 		currentGameState = GameState.InProgress;
 		game.state.start('Play');
@@ -93,9 +93,13 @@ Game.Play.prototype = {
     },
 
     boundBounce: function (ball, bound) {
-	var variance = 0; // 0.25;
+	var variance = 0.25;
 	ball.body.bounce.x = Math.random() * variance * 2 + (1 - variance);
-	blip2.play('', 0, 0.4, false, true);
+	
+	if (currentGameState != GameState.Won) {
+	    blip2.play('', 0, 0.4, false, true);
+	}
+
     },
 
     gameWin: function (ball, goal) {
