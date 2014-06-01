@@ -16,6 +16,9 @@ Game.Menu.prototype = {
 
 	var prompt = game.add.text(game.world.width / 2, game.world.height / 3 * 2, 'press the UP arrow key to begin', { font: '30px Arial', fill: '#222222', align: 'center' });
 	prompt.anchor.setTo(0.5, 0.5);
+
+	music = game.add.sound('music');
+	music.play('', 0, 0.5, true, false);
     },
 
     update: function () {

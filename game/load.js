@@ -9,6 +9,10 @@ Game.Load.prototype = {
 	game.load.image('rectangle', 'assets/img/rectangle.png');
 	game.load.image('ball', 'assets/img/ball.png');
 	game.load.image('goal', 'assets/img/goal.png');
+
+	game.load.audio('music', 'assets/aud/Pamgaea.mp3');
+	game.load.audio('blip1', 'assets/aud/pong_blip_a4.wav');
+	game.load.audio('blip2', 'assets/aud/pong_blip_c4.wav');
     },
 
     create: function () {

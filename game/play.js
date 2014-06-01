@@ -44,17 +44,21 @@ Game.Play.prototype = {
 
 	ball = game.add.sprite(game.world.width / 5 * 3, game.world.height + 40, 'ball');
 	ball.scale.setTo(0.5, 0.5);
+	ball.anchor.setTo(0.5, 0.5);
 	game.physics.arcade.enable(ball);
 	ball.body.bounce.x = 1;
 	ball.body.bounce.y = 1.05;
 	ball.body.gravity.y = 1000;
 	ball.body.velocity.x = -300 + Math.random() * 50;
 	ball.body.velocity.y = -600;
+
+	blip1 = game.add.sound('blip1');
+	blip2 = game.add.sound('blip2');
     },
 
     update: function () {
 	paddle.body.immovable = true;
-	game.physics.arcade.collide(ball, paddle);
+	game.physics.arcade.collide(ball, paddle, this.paddleBounce, null, this);
 	paddle.body.immovable = false;
 	game.physics.arcade.collide(ball, bounds, this.boundBounce, null, this);
 	game.physics.arcade.collide(paddle, bounds);
@@ -84,9 +88,14 @@ Game.Play.prototype = {
 	}
     },
 
+    paddleBounce: function (ball, paddle) {
+	blip1.play('', 0, 0.4, false, true);
+    },
+
     boundBounce: function (ball, bound) {
 	var variance = 0; // 0.25;
 	ball.body.bounce.x = Math.random() * variance * 2 + (1 - variance);
+	blip2.play('', 0, 0.4, false, true);
     },
 
     gameWin: function (ball, goal) {
