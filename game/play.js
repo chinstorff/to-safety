@@ -89,7 +89,7 @@ Game.Play.prototype = {
     },
 
     paddleBounce: function (ball, paddle) {
-	blip1.play('', 0, 0.4, false, true);
+	blip1.play('', 0, 0.3, false, true);
     },
 
     boundBounce: function (ball, bound) {
@@ -97,7 +97,7 @@ Game.Play.prototype = {
 	ball.body.bounce.x = Math.random() * variance * 2 + (1 - variance);
 	
 	if (currentGameState != GameState.Won) {
-	    blip2.play('', 0, 0.4, false, true);
+	    blip2.play('', 0, 0.3, false, true);
 	}
 
     },
